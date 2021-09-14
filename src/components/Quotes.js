@@ -18,6 +18,7 @@ const Quotes = () => {
     return(
         <div>
             <h1>Quotations</h1>
+            {console.log(quotes)}
            {renderQuotes()} 
         </div>
     )
