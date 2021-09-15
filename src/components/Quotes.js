@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react'
+import Quote from './Quote'
 
 const url = 'http://localhost:3001'
 
@@ -12,10 +13,13 @@ const Quotes = () => {
         .then(data => setQuotes(data))
     }, [setQuotes])
 
+    const renderQuotes = () => quotes.map(q => <Quote key={q.id} quoteData={q} />)
+
     return(
         <div>
+            <h1>Quotations</h1>
             {console.log(quotes)}
-            The Quotes Go Here!
+           {renderQuotes()} 
         </div>
     )
 }
