@@ -10,8 +10,11 @@ const Quotes = () => {
     useEffect(() => {
         fetch(url + '/quotes')
         .then(resp => resp.json())
-        .then(data => setQuotes(data))
-    }, [setQuotes])
+        .then(data => {
+            const quotes = data.data.map(q => q.attributes)
+            setQuotes(quotes)
+        })
+    }, [])
 
     const renderQuotes = () => quotes.map(q => <Quote key={q.id} quoteData={q} />)
 
