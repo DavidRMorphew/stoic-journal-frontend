@@ -11,12 +11,20 @@ const Quotes = () => {
         fetch(url + '/quotes')
         .then(resp => resp.json())
         .then(data => {
-            const quotes = data.data.map(q => q.attributes)
+            const quotes = data.data.map((q: any) => q.attributes)
             setQuotes(quotes)
         })
     }, [])
 
-    const renderQuotes = () => quotes.map(q => <Quote key={q.id} quoteData={q} />)
+    interface QuoteDataProps {
+        id: number,
+        body: string, 
+        book_num: string, 
+        section_num: string, 
+        translator_name: string, 
+    }
+
+    const renderQuotes = () => quotes.map((q: QuoteDataProps) => <Quote key={q.id} quoteData={q} />)
 
     return(
         <div>
