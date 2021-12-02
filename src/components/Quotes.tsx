@@ -19,8 +19,8 @@ const Quotes = () => {
     interface QuoteDataProps {
         id: number,
         body: string, 
-        book_num: string, 
-        section_num: string, 
+        book_num: number, 
+        section_num: number, 
         translator_name: string, 
     }
 
