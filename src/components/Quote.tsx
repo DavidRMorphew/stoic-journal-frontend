@@ -1,6 +1,6 @@
 import React from 'react'
 
-interface QuoteProps {
+export interface QuoteProps {
     quoteData: { 
         body: string, 
         book_num: number, 
