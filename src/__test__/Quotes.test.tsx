@@ -1,5 +1,4 @@
-import React from 'react';
-import { render, screen, fireEvent, prettyDOM } from "@testing-library/react";
+import { act, render } from "@testing-library/react";
 import Quotes from '../components/Quotes';
 import {rest} from 'msw';
 import {setupServer} from 'msw/node';
@@ -42,7 +41,7 @@ describe('<Quotes />', () => {
 }   
 
 test('should display a quote on the page', async () => {
-  render(<Quotes />);
+  
     const { findByTestId } = render(<Quotes />)
 
     const firstQuote = await findByTestId('quote-1');
