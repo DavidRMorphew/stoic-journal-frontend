@@ -1,29 +1,35 @@
-import { useState, useEffect } from 'react'
-import Quote from './Quote'
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { addQuotes } from './quotesSlice';
+import Quote from './Quote';
 
 const url = 'http://localhost:3001'
 
 const Quotes = () => {
 
-    const [quotes, setQuotes] = useState([])
+    // const [quotes, setQuotes] = useState([])
+
+    const quotes: object[] = useSelector((state) => state.quotes.value);
+    const dispatch = useDispatch();
 
     const fetchQuotations = async () => {
         const resp = await fetch(url + '/quotes');
         const data = await resp.json();
         const quotes = data.data?.map((q: any) => q.attributes)
-        setQuotes(quotes);
+        addQuotes(quotes);
     }
     
     useEffect(() => {
         fetchQuotations();
     }, [])
 
-    const renderQuotes = () => quotes?.map((q: QuoteDataProps) => <div key={q.id} data-testid={`quote-${q.id}`}><Quote quoteData={q} /></div>)
+    // const renderQuotes = () => quotes.map((q: QuoteDataProps) => <div key={q.id} data-testid={`quote-${q.id}`}><Quote quoteData={q} /></div>)
 
     return(
         <div>
             <h1>Quotations</h1>
-           {renderQuotes()} 
+            {console.log(quotes)}
+           {/* {renderQuotes()}  */}
         </div>
     )
 }
