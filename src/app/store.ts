@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import quotesSlice from '../features/quotes/quotesSlice';
 
-const store= configureStore({
+export const store= configureStore({
     reducer: {
         quotes: quotesSlice
     },
