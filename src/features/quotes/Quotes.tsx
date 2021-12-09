@@ -16,9 +16,6 @@ export interface QuoteDataProps {
 }
 
 const Quotes = () => {
-
-    // const [quotes, setQuotes] = useState([])
-
     const quotes: QuoteDataProps[] = useAppSelector((state) => state.quotes.value);
     const dispatch = useAppDispatch();
 
@@ -31,17 +28,17 @@ const Quotes = () => {
     
     useEffect(() => {
         fetchQuotations();
-    }, [quotes])
+    }, [])
 
-    const renderQuotes = () => {
-        console.log(quotes)
-        console.log(JSON.stringify(quotes) !== '[]')
-        if (JSON.stringify(quotes) !== '[]') {
-            // quotes.forEach((q: QuoteDataProps) => console.log(q))
-            return quotes.map((q: QuoteDataProps, i: number, quotesArray: object[]) => <div key={q.id} data-testid={`quote-${q.id}`}><Quote quoteData={q} /></div>)
-            // quotes.map((q: QuoteDataProps, i: number, quotesArray: object[]) => <div key={q.id} data-testid={`quote-${q.id}`}><Quote quoteData={q} /></div>)
-        }
-    }
+    const renderQuotes = () => 
+        quotes.map((q: QuoteDataProps) => 
+            <div 
+                key={q.id} 
+                data-testid={`quote-${q.id}`}
+            >
+                <Quote quoteData={q} />
+            </div>
+        )
 
     return(
         <div>
