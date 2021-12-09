@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addQuotes } from './quotesSlice';
-import Quote from './Quote';
+import Quote, { QuoteProps } from './Quote';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
 const url = 'http://localhost:3001'

@@ -1,12 +1,8 @@
 import React from 'react'
+import { QuoteDataProps } from './Quotes'
 
 export interface QuoteProps {
-    quoteData: { 
-        body: string, 
-        book_num: number, 
-        section_num: number, 
-        translator_name: string, 
-    } 
+    quoteData: QuoteDataProps
 }
 
 const Quote = (props: QuoteProps) => {
