@@ -1,5 +1,5 @@
 import { act, render } from "@testing-library/react";
-import Quotes from '../components/Quotes';
+import Quotes from '../features/quotes/Quotes';
 import {rest} from 'msw';
 import {setupServer} from 'msw/node';
 
