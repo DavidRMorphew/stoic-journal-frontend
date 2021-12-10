@@ -1,12 +1,11 @@
-import { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import { addQuotes } from './quotesSlice';
 import Quote from './Quote';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
 const url = 'http://localhost:3001'
 
-export interface QuoteDataProps {
+export interface QuoteData {
     id: number,
     body: string, 
     book_num: number, 
@@ -15,14 +14,14 @@ export interface QuoteDataProps {
     work_name: string 
 }
 
-const Quotes = () => {
-    const quotes: QuoteDataProps[] = useAppSelector((state) => state.quotes.value);
+const Quotes: React.FC = () => {
+    const quotes: QuoteData[] = useAppSelector((state) => state.quotes.value);
     const dispatch = useAppDispatch();
 
     const fetchQuotations = async () => {
         const resp = await fetch(url + '/quotes');
         const data = await resp.json();
-        const quotes: QuoteDataProps[] = data.data?.map((q: any) => q.attributes);
+        const quotes: QuoteData[] = data.data?.map((quoteReturnFromDB: {attributes: QuoteData}) => quoteReturnFromDB.attributes);
         dispatch(addQuotes(quotes));
     }
     
@@ -31,7 +30,7 @@ const Quotes = () => {
     }, [])
 
     const renderQuotes = () => 
-        quotes.map((q: QuoteDataProps) => 
+        quotes.map((q: QuoteData) => 
             <div 
                 key={q.id} 
                 data-testid={`quote-${q.id}`}
