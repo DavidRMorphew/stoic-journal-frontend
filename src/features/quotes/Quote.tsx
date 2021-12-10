@@ -1,15 +1,11 @@
 import React from 'react'
+import { QuoteData } from './Quotes'
 
 export interface QuoteProps {
-    quoteData: { 
-        body: string, 
-        book_num: number, 
-        section_num: number, 
-        translator_name: string, 
-    } 
+    quoteData: QuoteData
 }
 
-const Quote = (props: QuoteProps) => {
+const Quote: React.FC<QuoteProps> = (props) => {
     return (
         <div>
             <small>Book {props.quoteData.book_num} Section {props.quoteData.section_num}</small>
