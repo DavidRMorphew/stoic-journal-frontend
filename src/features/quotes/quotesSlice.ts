@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../../app/store';
-import { QuoteDataProps } from './Quotes';
+import { QuoteData } from './Quotes';
 
 interface quotesState {
-    value: QuoteDataProps[]
+    value: QuoteData[]
 }
 
 const initialState: quotesState = {
@@ -14,7 +14,7 @@ export const quotesSlice = createSlice({
     name: 'quotes',
     initialState,
     reducers: {
-        addQuotes: (state, action: PayloadAction<QuoteDataProps[]>) => {
+        addQuotes: (state, action: PayloadAction<QuoteData[]>) => {
             state.value = action.payload
         },
         removeQuotes: (state) => {
