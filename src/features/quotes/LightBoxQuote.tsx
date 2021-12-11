@@ -7,14 +7,11 @@ interface LightBoxQuoteProps {
 const LightBoxQuote: React.FC<LightBoxQuoteProps> = (props) => {
 
     return(
-        <div className="quote-display">
-            <em>{props.quoteData!.work_name}</em>
-                <br></br>
-            <small>Book {props.quoteData!.book_num} Section {props.quoteData!.section_num}</small>
-                <br></br>
-            <small>by {props.quoteData!.author_name}</small>
-            <p>"{props.quoteData!.body}"</p>
-            <small>(trans. {props.quoteData!.translator_name})</small>
+        <div id="lightbox-quote-display">
+            <h1><em>{props.quoteData!.work_name}</em> by {props.quoteData!.author_name}</h1>
+            <h3>Book {props.quoteData!.book_num} Section {props.quoteData!.section_num}</h3>
+            <h4>"{props.quoteData!.body}"</h4>
+            <h3>(trans. {props.quoteData!.translator_name})</h3>
             <br></br>
         </div>
     )

@@ -56,7 +56,7 @@ const Quotes: React.FC = () => {
         )
 
     return(
-        <div>
+        <div id="quotes-container">
             { shouldDisplayLightBox ?
         <div id="lightbox" onClick={clearLightBoxWhenClicked}>
             <LightBoxQuote quoteData={quoteToDisplay}/>

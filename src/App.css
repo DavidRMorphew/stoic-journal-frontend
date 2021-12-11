@@ -43,6 +43,11 @@
   box-sizing: border-box;
 }
 
+#quotes-container {
+  margin-right: 100px;
+  margin-left: 100px;
+}
+
 #lightbox {
   display: flex;
   align-self: center;
@@ -54,7 +59,11 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.65);
-  color: white;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: rgb(245,245,245);
 }
 
+#lightbox-quote-display {
+  margin-right: 100px;
+  margin-left: 100px;
+}
