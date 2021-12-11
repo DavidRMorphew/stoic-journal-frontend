@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { addQuotes } from './quotesSlice';
 import Quote from './Quote';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
@@ -17,6 +17,8 @@ export interface QuoteData {
 const Quotes: React.FC = () => {
     const quotes: QuoteData[] = useAppSelector((state) => state.quotes.value);
     const dispatch = useAppDispatch();
+    const [shouldDisplayLightBox, setShouldDisplayLightBox] = useState<boolean>(false);
+    const [quoteToDisplay, setQuoteToDisplay] = useState<QuoteData|null>(null);
 
     const fetchQuotations = async () => {
         const resp = await fetch(url + '/quotes');
@@ -35,12 +37,26 @@ const Quotes: React.FC = () => {
                 key={q.id} 
                 data-testid={`quote-${q.id}`}
             >
-                <Quote quoteData={q} />
+                <Quote 
+                    quoteData={q} 
+                    showLightBox={setShouldDisplayLightBox} 
+                    selectQuoteForLightBox={setQuoteToDisplay} 
+                    lightBoxDisplayed={shouldDisplayLightBox}
+                    currentQuoteToDisplay={quoteToDisplay} 
+                />
             </div>
         )
 
     return(
         <div>
+            { shouldDisplayLightBox ?
+        <div id="lightbox">
+            <h1>I'm a lightbox</h1>
+            <p>------------------------------------------------------</p>
+            {console.log('Quote to display in quotes component', quoteToDisplay)}
+            <h1>{quoteToDisplay ? quoteToDisplay.work_name : null}</h1>
+        </div>
+        : '' }
             <h1>Quotations</h1>
            {renderQuotes()} 
         </div>
