@@ -6,12 +6,13 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 const url = 'http://localhost:3001'
 
 export interface QuoteData {
-    id: number,
-    body: string, 
-    book_num: number, 
-    section_num: number, 
-    translator_name: string,
-    work_name: string 
+    id: number;
+    body: string; 
+    book_num: number; 
+    section_num: number; 
+    translator_name: string;
+    work_name: string;
+    author_name: string; 
 }
 
 const Quotes: React.FC = () => {
@@ -41,6 +42,7 @@ const Quotes: React.FC = () => {
             <div 
                 key={q.id} 
                 data-testid={`quote-${q.id}`}
+                className="quote-display"
             >
                 <Quote 
                     quoteData={q} 
@@ -56,10 +58,7 @@ const Quotes: React.FC = () => {
         <div>
             { shouldDisplayLightBox ?
         <div id="lightbox" onClick={clearLightBoxWhenClicked}>
-            <h1>I'm a lightbox</h1>
-            <p>------------------------------------------------------</p>
-            {console.log('Quote to display in quotes component', quoteToDisplay)}
-            <h1>{quoteToDisplay ? quoteToDisplay.work_name : null}</h1>
+            
         </div>
         : '' }
             <h1>Quotations</h1>

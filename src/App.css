@@ -37,6 +37,12 @@
   }
 }
 
+.quote-display {
+  margin: 5px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
 #lightbox {
   display: flex;
   align-self: center;
