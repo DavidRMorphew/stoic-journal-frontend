@@ -26,6 +26,11 @@ const Quotes: React.FC = () => {
         const quotes: QuoteData[] = data.data?.map((quoteReturnFromDB: {attributes: QuoteData}) => quoteReturnFromDB.attributes);
         dispatch(addQuotes(quotes));
     }
+
+    const clearLightBoxWhenClicked = () => {
+        setShouldDisplayLightBox(false);
+        setQuoteToDisplay(null);
+    }
     
     useEffect(() => {
         fetchQuotations();
@@ -50,7 +55,7 @@ const Quotes: React.FC = () => {
     return(
         <div>
             { shouldDisplayLightBox ?
-        <div id="lightbox">
+        <div id="lightbox" onClick={clearLightBoxWhenClicked}>
             <h1>I'm a lightbox</h1>
             <p>------------------------------------------------------</p>
             {console.log('Quote to display in quotes component', quoteToDisplay)}
