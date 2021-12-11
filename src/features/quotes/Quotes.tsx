@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { addQuotes } from './quotesSlice';
 import Quote from './Quote';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import LightBoxQuote from './LightBoxQuote';
 
 const url = 'http://localhost:3001'
 
@@ -58,7 +59,7 @@ const Quotes: React.FC = () => {
         <div>
             { shouldDisplayLightBox ?
         <div id="lightbox" onClick={clearLightBoxWhenClicked}>
-            
+            <LightBoxQuote quoteData={quoteToDisplay}/>
         </div>
         : '' }
             <h1>Quotations</h1>
