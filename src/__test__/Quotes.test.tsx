@@ -1,4 +1,4 @@
-import { act, render } from "@testing-library/react";
+import { render } from "./test-utils.tsx";
 import Quotes from '../features/quotes/Quotes';
 import {rest} from 'msw';
 import {setupServer} from 'msw/node';
