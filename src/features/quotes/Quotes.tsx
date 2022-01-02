@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { addQuotes } from './quotesSlice';
 import Quote from './Quote';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
