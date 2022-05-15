@@ -3,6 +3,7 @@ import { addQuotes } from './quotesSlice';
 import Quote from './Quote';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import LightBoxQuote from './LightBoxQuote';
+import {useScreenSize} from "../../utils/useScreenSize";
 
 const url = 'http://localhost:3001'
 
@@ -56,14 +57,14 @@ const Quotes: React.FC = () => {
         )
 
     return(
-        <div id="quotes-container">
+        <div id={`quotes-container${useScreenSize() === 'mobile' ? '-mobile' : ''}`}>
             { shouldDisplayLightBox ?
-        <div id="lightbox" onClick={clearLightBoxWhenClicked}>
-            <LightBoxQuote quoteData={quoteToDisplay}/>
-        </div>
-        : '' }
+            <div id="lightbox" onClick={clearLightBoxWhenClicked}>
+                <LightBoxQuote quoteData={quoteToDisplay}/>
+            </div>
+            : '' }
             <h1>Quotations</h1>
-           {renderQuotes()} 
+            {renderQuotes()}
         </div>
     )
 }
