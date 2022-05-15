@@ -7,8 +7,13 @@
   pointer-events: none;
 }
 
+.App-logo-mobile {
+  height: 40vmin;
+  pointer-events: none;
+}
+
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
+  .App-logo, .App-logo-mobile {
     animation: App-logo-spin infinite 20s linear;
   }
 }
@@ -16,6 +21,17 @@
 .App-header {
   background-color: #282c34;
   min-height: 30vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-header-mobile {
+  background-color: #282c34;
+  min-height: 20vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -48,6 +64,11 @@
   margin-left: 100px;
 }
 
+#quotes-container-mobile {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
 #lightbox {
   display: flex;
   align-self: center;
@@ -59,11 +80,16 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(0, 0, 0, 0.85);
   color: rgb(245,245,245);
 }
 
 #lightbox-quote-display {
   margin-right: 100px;
   margin-left: 100px;
+}
+
+#lightbox-quote-display-mobile {
+  margin-right: 10px;
+  margin-left: 10px;
 }
